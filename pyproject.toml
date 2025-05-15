@@ -1,0 +1,24 @@
+[project]
+name = "airplane_simple-chatbot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [{ name = "parsa", email = "parsa.miraghaie@gmail.com" }]
+requires-python = ">=3.12"
+dependencies = ["airplane-simple-retriever"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+pyapp = { git = "https://github.com/Parsa-Mir/app.git", subdirectory = "pyapp" }
+airplane-simple-retriever = { path = ".appdeps/airplane_simple_retriever", editable = true }
+
+[dependency-groups]
+dev = ["ipykernel>=6.29.5"]
+
+
+[project.scripts]
+generate = "airplane_simple_chatbot.main:generate"
+inference = "airplane_simple_chatbot.main:inference"

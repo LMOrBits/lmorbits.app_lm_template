@@ -1,0 +1,4 @@
+[submodule ".appdeps/airplane_simple_retriever"]
+	path = .appdeps/airplane_simple_retriever
+	url = https://github.com/Parsa-Mir/lmorbits.airplane_simple_retriever.git
+	branch = main
