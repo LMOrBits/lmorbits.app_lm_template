@@ -2306,7 +2306,7 @@ wheels = [
 [[package]]
 name = "pyapp"
 version = "0.1.0"
-source = { git = "https://github.com/Parsa-Mir/app.git?subdirectory=pyapp#7188ea5f9fbea70e5f217f85cf1aa3ca05b4b987" }
+source = { git = "https://github.com/Parsa-Mir/app.git?subdirectory=pyapp#2553345d13e52b1bafd7a9142ba4e62331907a3c" }
 dependencies = [
     { name = "click" },
     { name = "data", extra = ["simple"] },
