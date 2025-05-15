@@ -16,9 +16,10 @@ pyapp = { git = "https://github.com/Parsa-Mir/app.git", subdirectory = "pyapp" }
 airplane-simple-retriever = { path = ".appdeps/airplane_simple_retriever", editable = true }
 
 [dependency-groups]
-dev = ["ipykernel>=6.29.5"]
+dev = ["ipykernel>=6.29.5", "pyppeteer>=2.0.0"]
 
 
 [project.scripts]
 generate = "airplane_simple_chatbot.main:generate"
 inference = "airplane_simple_chatbot.main:inference"
+graph = "airplane_simple_chatbot.main:get_graph"

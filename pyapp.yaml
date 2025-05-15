@@ -1,4 +1,12 @@
-config:
+main:
   prompts:
     - role: system
       content: "You are a helpful assistant."
+    - role: human
+      content: |
+        based on the following documents, answer the question.
+        {documents}
+    - role: ai
+      content: sure what is the question?
+  params:
+    - documents
