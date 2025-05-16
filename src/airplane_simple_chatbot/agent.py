@@ -4,14 +4,12 @@ from langchain_core.messages import BaseMessage
 from airplane_simple_chatbot.config import model, config
 from airplane_simple_retriever.schemas import State as RetrieverState
 
-def agent_function(messages: list[BaseMessage] , documents: list[Document]) -> str:
+def agent_function(messages: list[BaseMessage] ):
     prompt = ChatPromptTemplate.from_messages(config.main.to_list()+ messages)
-    chain = prompt | model
-    if len(documents) > 0:
-        return chain.invoke({"documents": documents})
-    else:
-        return chain.invoke({"documents": "no documents found, we don't have the answer to the question"})
+    chain = prompt | model.with_config(run_name="stream")  
+    return chain
 
-def chatbot(state: RetrieverState) -> RetrieverState:
-    result = agent_function(state.messages, state.retriver_results)
-    return {"messages": result}
+def chatbot(state: RetrieverState):
+    documents = state.retriver_results if len(state.retriver_results) > 0 else "no documents found, we don't have the answer to the question"
+    chain = agent_function(state.messages)
+    return chain.invoke({"documents": documents})

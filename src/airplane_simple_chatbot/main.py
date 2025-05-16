@@ -20,6 +20,18 @@ def inference():
     session_id = str(uuid.uuid4())
     return app_invoke(messages, session_id)
 
+@traced_agent(name="airplane-simple-chatbot")
+async def app_stream(messages , session_id: str):
+  async for event in app.astream_events(input={"messages": messages, "session_id": session_id}, version="v2",include_names=["Docs","stream"]):
+    print(event)
+    kind = event["event"]
+    if kind == "on_chat_model_stream":
+        print(event['data']['chunk'])
+    if kind == "on_retriever_end":
+      docs = []
+      for i,doc in enumerate(event['data']['output']):
+        docs.append(doc)
+
 
 def get_graph():
     from langchain_core.runnables.graph import MermaidDrawMethod
