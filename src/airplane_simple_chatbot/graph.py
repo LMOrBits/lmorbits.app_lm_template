@@ -1,5 +1,5 @@
 from pyapp.utils.config import get_pyapp_config
-from airplane_simple_chatbot.agent import agent_function
+from airplane_simple_chatbot.agent import chatbot
 from airplane_simple_chatbot.schemas import Config, ChatbotInvoke
 from airplane_simple_retriever.schemas import State as RetrieverState
 from airplane_simple_retriever.graph import Graph as RetrieverGraph
@@ -12,9 +12,7 @@ from pathlib import Path
 config = get_pyapp_config(Config, Path(__file__))
 
 
-def chatbot(state: RetrieverState) -> RetrieverState:
-    result = agent_function(state.messages, state.retriver_result)
-    return {"messages": result}
+
 
 
 

@@ -15,7 +15,7 @@ def app_invoke(messages , session_id: str):
 
 def inference():
     messages = [
-        HumanMessage(content="what is the capital of france?")
+        HumanMessage(content="When do I need to be at the boarding gate?")
     ]
     session_id = str(uuid.uuid4())
     return app_invoke(messages, session_id)
