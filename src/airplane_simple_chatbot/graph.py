@@ -11,12 +11,6 @@ from typing import Optional
 from pathlib import Path
 config = get_pyapp_config(Config, Path(__file__))
 
-
-
-
-
-
-
 class ChatbotGraph:
     name = "airplane-simple-chatbot"
     nodes = {
@@ -68,9 +62,9 @@ class Graph:
 
 
 def get_app():
-    airplane_simple_retriever_graph = Graph()
     graph = StateGraph(RetrieverState)
-    graph = airplane_simple_retriever_graph.add_workflow(graph)
+    airplane_simple_chatbot_graph = Graph()
+    graph = airplane_simple_chatbot_graph.add_workflow(graph)
     app = graph.compile()
     return app
 
