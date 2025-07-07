@@ -3,6 +3,7 @@ from langchain_core.messages import BaseMessage, HumanMessage, AIMessage, System
 from typing import Optional, Literal, List
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.documents import Document
+from langchain_core.messages import AnyMessage
 # Define the Prompt data model
 class Prompt(BaseModel):
     role: Literal["user", "assistant", "system", "human", "ai", "sys"]
@@ -32,7 +33,9 @@ class Prompts(BaseModel):
 class Config(BaseModel):
     main: Prompts
     
-
+class State(BaseModel):
+    messages: list[AnyMessage]
+    session_id: str
 
 class ChatbotInvoke(BaseModel):
     messages: list[BaseMessage]

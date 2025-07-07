@@ -1,11 +1,11 @@
 [project]
-name = "airplane_simple-chatbot"
+name = "app_lm_template"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [{ name = "parsa", email = "parsa.miraghaie@gmail.com" }]
 requires-python = ">=3.12"
-dependencies = ["airplane-simple-retriever"]
+dependencies = ["langgraph>=0.4.3", "pyapp[local-langchain]"]
 
 [build-system]
 requires = ["hatchling"]
@@ -13,12 +13,13 @@ build-backend = "hatchling.build"
 
 [tool.uv.sources]
 pyapp = { git = "https://github.com/Parsa-Mir/app.git", subdirectory = "pyapp" }
-airplane-simple-retriever = { path = ".appdeps/airplane_simple_retriever", editable = true }
 
 [dependency-groups]
 dev = ["ipykernel>=6.29.5", "pyppeteer>=2.0.0"]
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/app_lm_template"]
 
 [project.scripts]
-inference = "airplane_simple_chatbot.main:inference"
-graph = "airplane_simple_chatbot.main:get_graph"
+inference = "app_lm_template.main:inference"
+graph = "app_lm_template.main:get_graph"

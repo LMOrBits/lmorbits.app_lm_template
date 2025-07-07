@@ -1,6 +1,6 @@
 from langchain_core.messages import HumanMessage
 
-from airplane_simple_chatbot.graph import get_app
+from app_lm_template.graph import get_app
 from pyapp.observation.phoneix import traced_agent
 import uuid
 from pathlib import Path
