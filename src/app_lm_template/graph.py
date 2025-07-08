@@ -41,6 +41,7 @@ class Graph:
         }
 
     def add_workflow(self,graph: StateGraph , end_node: Optional[str] = None, start_node: Optional[str] = None ):
+        graph.add_node(self.nodes["single"], chatbot) 
 
         if start_node and end_node:
             graph.add_edge(start_node, self.nodes["start"])
@@ -54,21 +55,9 @@ class Graph:
             graph.set_entry_point(self.nodes["start"])
         return graph
 
-
-
 def get_app():
     graph = StateGraph(State)
-    airplane_simple_chatbot_graph = Graph()
-    graph = airplane_simple_chatbot_graph.add_workflow(graph)
+    app_lm_template_graph = Graph()
+    graph = app_lm_template_graph.add_workflow(graph)
     app = graph.compile()
     return app
-
-
-
-
-
-
-
-
-
-

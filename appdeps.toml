@@ -1,7 +1,7 @@
 [project]
-name = "airplane_simple-chatbot"
+name = "app_lm_template"
 version = "0.0.1"
-description = "a simple airplane chatbot"
+description = "a simple app_lm_template"
 author = "parsa"
 
 [observability]

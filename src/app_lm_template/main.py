@@ -4,11 +4,11 @@ from app_lm_template.graph import get_app
 from pyapp.observation.phoneix import traced_agent
 import uuid
 from pathlib import Path
-
+from app_lm_template.config import app_config
 app = get_app()
 
 
-@traced_agent(name="airplane-simple-chatbot")
+@traced_agent(name=f"{app_config.project.name}-chatbot")
 def app_invoke(messages , session_id: str):
     state = app.invoke({"messages": messages, "session_id": session_id})
     return state["messages"]
@@ -20,7 +20,7 @@ def inference():
     session_id = str(uuid.uuid4())
     return app_invoke(messages, session_id)
 
-@traced_agent(name="airplane-simple-chatbot")
+@traced_agent(name=f"{app_config.project.name}-chatbot")
 async def app_stream(messages , session_id: str):
   async for event in app.astream_events(input={"messages": messages, "session_id": session_id}, version="v2",include_names=["Docs","stream"]):
     print(event)
